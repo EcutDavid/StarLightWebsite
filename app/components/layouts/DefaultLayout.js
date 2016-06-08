@@ -11,6 +11,11 @@ class DefaultLayout extends React.Component{
 
   render(){
     const { viewer } = this.props;
+    if (!viewer.page) {
+      return (
+        <h1 styleName='not-found'>Oooooooppppssss...... page not found</h1>
+      )
+    }
     const { post_title, post_content, thumbnail } = viewer.page;
 
     console.log(viewer);
