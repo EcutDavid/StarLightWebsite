@@ -3,15 +3,15 @@ import Relay from 'react-relay';
 import Page from '../pages/page.js';
 import PostContent from '../posts/PostContent';
 
-class FrontPageLayout extends React.Component{
-
+class FrontPageLayout extends React.Component {
 	render(){
-		const { post_title, post_content, thumbnail} = this.props.viewer.page;
+		const { post_title, post_content, thumbnail } = this.props.viewer.page;
+		const { variables } = this.props.relay;
 		let bg = {
 			backgroundImage: "url('" + thumbnail + "')"
 		}
 
-		let heroClass = thumbnail ? "hero_thumbnail" : "hero"
+		let heroClass = thumbnail ? "hero_thumbnail" : "hero";
 
 		return (
 			<Page>
@@ -32,9 +32,18 @@ class FrontPageLayout extends React.Component{
 	}
 }
 
+function getHomePagePostName() {
+	console.log(location.search);
+	if (location.search.indexOf('lang=ch') !== -1) {
+		return "home-page-ch"
+	}
+	return "home-page"
+}
+
 export default Relay.createContainer(FrontPageLayout, {
-	initialVariables:{
-    page: "home-page"
+
+	initialVariables: {
+    page: getHomePagePostName()
   },
 
   fragments: {
@@ -49,7 +58,6 @@ export default Relay.createContainer(FrontPageLayout, {
 				settings{
 					id
 					uploads
-					amazonS3
 				}
       }
     `,

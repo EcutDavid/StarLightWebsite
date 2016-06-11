@@ -91,7 +91,6 @@ export default Relay.createContainer(PostList, {
         settings{
           id
           uploads
-          amazonS3
         }
 			}
     `
