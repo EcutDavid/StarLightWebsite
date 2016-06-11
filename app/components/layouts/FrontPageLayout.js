@@ -17,8 +17,8 @@ class FrontPageLayout extends React.Component{
 			<Page>
 				<div styleName={heroClass} style={bg}>
 					<div styleName="wrapper tight">
-						<h1 styleName="title">WordExpress</h1>
-						<h4 styleName="subtitle">WordPress using Node, Express, and React.</h4>
+						<h1 styleName="title">Starlight Drama</h1>
+						<h4 styleName="subtitle">Language learning for children</h4>
 					</div>
 				</div>
 
@@ -33,10 +33,14 @@ class FrontPageLayout extends React.Component{
 }
 
 export default Relay.createContainer(FrontPageLayout, {
+	initialVariables:{
+    page: "home-page"
+  },
+
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        page(post_name:"hello-world"){
+        page(post_name:$page){
 					id,
 					post_title
 					post_content

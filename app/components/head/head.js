@@ -5,19 +5,16 @@ class Head extends React.Component{
   render(){
     return(
       <Helmet
-          title="WordExpress"
-          titleTemplate="WordExpress - %s"
+          title="Starlight drama"
           meta={[
-              {"name": "description", "content": "Replacing PHP with Javascript in WordPress development"},
-              {"property": "og:title", "content": "WordExpress"},
+              {"name": "description", "content": "Starlight drama"},
+              {"property": "og:title", "content": "Starlight drama"},
               {"property": "og:type", "content": "website"},
-              {"property": "og:description", "content": "Replacing PHP with Javascript in WordPress development"},
-              {"property": "og:image", "content": "http://wordexpress.s3.amazonaws.com/wp-content/uploads/2016/01/24195552/logowithtype.png"}
+              {"property": "og:description", "content": "Starlight drama"}
           ]}
           link={[
-              {"rel": "canonical", "href": "http://wordexpress.io"},
+              {"rel": "canonical", "href": "http://starlightdrama.club"},
           ]}
-          onChangeClientState={(newState) => console.log(newState)}
       />
     )
   }

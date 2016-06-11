@@ -18,7 +18,9 @@ class DefaultLayout extends React.Component{
     }
     const { post_title, post_content, thumbnail } = viewer.page;
 
-    console.log(viewer);
+    //The initialVariables is injected here
+    console.log(this.props.page)
+
 
     let bg = {
       backgroundImage: "url('" + thumbnail + "')"
