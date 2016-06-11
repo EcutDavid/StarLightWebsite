@@ -33,7 +33,6 @@ class FrontPageLayout extends React.Component {
 }
 
 function getHomePagePostName() {
-	console.log(location.search);
 	if (location.search.indexOf('lang=ch') !== -1) {
 		return "home-page-ch"
 	}
@@ -42,7 +41,7 @@ function getHomePagePostName() {
 
 export default Relay.createContainer(FrontPageLayout, {
 
-	initialVariables: {
+  initialVariables: {
     page: getHomePagePostName()
   },
 
@@ -50,15 +49,15 @@ export default Relay.createContainer(FrontPageLayout, {
     viewer: () => Relay.QL`
       fragment on User {
         page(post_name:$page){
-					id,
-					post_title
-					post_content
-					thumbnail
-				},
-				settings{
-					id
-					uploads
-				}
+			id,
+			post_title
+			post_content
+			thumbnail
+		},
+		settings{
+			id
+			uploads
+		}
       }
     `,
   },
