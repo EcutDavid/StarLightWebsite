@@ -24,9 +24,17 @@
     "deploy": "bash scripts/deploy.sh",
     "eslint": "eslint .",
     "jscs": "jscs .",
+    "start-prod": "better-npm-run start-prod",
     "updateschema": "better-npm-run updateschema"
   },
   "betterScripts": {
+    "start-prod": {
+      "command": "npm run build && forever start ./dist/server.js",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "3000"
+      }
+    },
     "start": {
       "command": "node ./dist/server.js",
       "env": {
@@ -55,7 +63,7 @@
       "command": "cp -R ./settings ./dist/ && babel -d ./dist/settings ./settings"
     },
     "build": {
-      "command": "rimraf dist webpack --config ./webpack.production.config.js --progress --profile --colors && npm run build-server && npm run build-schema && npm run build-settings",
+      "command": "webpack --config ./webpack.production.config.js --progress --profile --colors && npm run build-server && npm run build-schema && npm run build-settings",
       "env": {
         "NODE_ENV": "production"
       }
