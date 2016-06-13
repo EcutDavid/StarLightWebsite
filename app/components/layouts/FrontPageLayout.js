@@ -10,6 +10,7 @@ class FrontPageLayout extends React.Component {
 		let bg = {
 			backgroundImage: "url('" + thumbnail + "')"
 		}
+		const isCn = checkIsCn()
 
 		let heroClass = thumbnail ? "hero_thumbnail" : "hero";
 
@@ -17,8 +18,12 @@ class FrontPageLayout extends React.Component {
 			<Page>
 				<div styleName={heroClass} style={bg}>
 					<div styleName="wrapper tight">
-						<h1 styleName="title">Starlight Drama</h1>
-						<h4 styleName="subtitle">Language learning for children</h4>
+						<h1 styleName="title">
+							{ isCn ? "聚星戏剧俱乐部" : "Starlight Drama" }
+						</h1>
+						<h4 styleName="subtitle">
+							{ isCn ? "提供一个有趣和互动的方式来学习练习英语" : "Providing a fun and interactive way of learning and practicing English" }
+						</h4>
 					</div>
 				</div>
 
@@ -32,11 +37,12 @@ class FrontPageLayout extends React.Component {
 	}
 }
 
+function checkIsCn() {
+	return location.search.indexOf('lang=ch') !== -1
+}
+
 function getHomePagePostName() {
-	if (location.search.indexOf('lang=ch') !== -1) {
-		return "home-page-ch"
-	}
-	return "home-page"
+	return checkIsCn() ? "home-page-ch" : "home-page"
 }
 
 export default Relay.createContainer(FrontPageLayout, {
